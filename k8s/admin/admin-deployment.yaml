@@ -15,8 +15,7 @@ spec:
     spec:
       containers:
         - name: admin
-          image: shopizer-admin:local
-          imagePullPolicy: Never
+          image: ghcr.io/kumudamulgund/shopizer-admin:latest
           ports:
             - containerPort: 80
           env:

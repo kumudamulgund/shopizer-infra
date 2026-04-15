@@ -15,8 +15,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: shopizer:local
-          imagePullPolicy: Never
+          image: ghcr.io/kumudamulgund/shopizer:latest
           ports:
             - containerPort: 8080
           envFrom:
