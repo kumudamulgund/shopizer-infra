@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shopizer-backend
+  namespace: shopizer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shopizer-backend
+  template:
+    metadata:
+      labels:
+        app: shopizer-backend
+    spec:
+      containers:
+        - name: backend
+          image: shopizer:local
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: backend-config

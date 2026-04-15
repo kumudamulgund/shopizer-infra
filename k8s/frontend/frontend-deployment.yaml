@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shopizer-frontend
+  namespace: shopizer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shopizer-frontend
+  template:
+    metadata:
+      labels:
+        app: shopizer-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: ghcr.io/kumudamulgund/shopizer-shop-reactjs:latest
+          ports:
+            - containerPort: 80
+          env:
+            - name: APP_BASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: frontend-config
+                  key: APP_BASE_URL
+            - name: APP_API_VERSION
+              valueFrom:
+                configMapKeyRef:
+                  name: frontend-config
+                  key: APP_API_VERSION
+            - name: APP_MERCHANT
+              valueFrom:
+                configMapKeyRef:
+                  name: frontend-config
+                  key: APP_MERCHANT

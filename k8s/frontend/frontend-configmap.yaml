@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-config
+  namespace: shopizer
+data:
+  APP_BASE_URL: "http://localhost:30002"
+  APP_API_VERSION: "/api/v1/"
+  APP_MERCHANT: "DEFAULT"

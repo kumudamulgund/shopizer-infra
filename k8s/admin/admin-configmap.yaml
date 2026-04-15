@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: admin-config
+  namespace: shopizer
+data:
+  APP_BASE_URL: "http://localhost:30002/api"

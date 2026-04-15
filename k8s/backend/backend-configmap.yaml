@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: shopizer
+data:
+  SPRING_PROFILES_ACTIVE: mysql
+  DB_JDBC_URL: "jdbc:mysql://shopizer-db:3306/SALESMANAGER?autoReconnect=true&serverTimeZone=UTC&useUnicode=true&characterEncoding=UTF-8"
+  DB_USER: root
+  DB_PASSWORD: shopizer123

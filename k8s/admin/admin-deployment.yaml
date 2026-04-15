@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shopizer-admin
+  namespace: shopizer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shopizer-admin
+  template:
+    metadata:
+      labels:
+        app: shopizer-admin
+    spec:
+      containers:
+        - name: admin
+          image: shopizer-admin:local
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
+          env:
+            - name: APP_BASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: admin-config
+                  key: APP_BASE_URL
